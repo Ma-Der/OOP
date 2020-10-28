@@ -1,7 +1,8 @@
 import { Contact, Group, AddressBook } from '/js/addressBook.js';
 import { CartItem, Cart } from '/js/cart.js';
+import { EmailBuilder } from '/js/EmailBuilder.js';
 
-// start AddressBook
+// AddressBook
 
 const man = new Contact(
   'Mike',
@@ -54,9 +55,9 @@ console.log(addressOne);
 
 document.querySelector('#main').innerHTML = JSON.stringify(man);
 
+// CART
 
-
-
+console.log("-------------------------------------------------------------------------------");
 
 const item1 = new CartItem('True', 'Thriller', 35, 5);
 const item2 = new CartItem('Vaery', 'Comedy', 50);
@@ -64,9 +65,20 @@ const cart1 = new Cart('midreader');
 
 cart1.addItem(item1, 5);
 cart1.addItem(item2, 15);
-//console.log(item1);
-console.log(cart1);
 //cart1.deleteItem(item1);
-cart1.changeItemAmount(item2 ,0);
+cart1.changeItemAmount(item2 ,20);
 console.log(cart1);
 cart1.cartSummary();
+
+// Email Builder
+
+console.log("-------------------------------------------------------------------------------");
+
+const newMail = new EmailBuilder('Leon Zawodowiec')
+.setFrom('sdasd@dsd.pl')
+.setTo('xzczxvb@poi.eu')
+.setCc('dsadfaf@sdsd.sd', 'asdasd@dfffdd.fd')
+.setBcc('dsadsadasdsadd@dsds.khh', 'dsassdafa@dsg.kh')
+.setMessage('sd')
+.build()
+console.log(newMail)

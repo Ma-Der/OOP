@@ -55,9 +55,26 @@ function validateNumber(num) {
 
   export class Cart {
     constructor(discountCode = 'noDiscount') {
+      validateString(discountCode);
+      const discountCodes = {
+        bestreader: 30,
+        midbestreader: 25,
+        midreader: 20,
+        newreader: 5,
+        noDiscount: 0
+      };
+
       this.id = uuidv4();
-      this.discount = 0;
       this.discountCode = discountCode;
+
+      if(Object.keys(discountCodes).find(key => discountCode === key)) {
+        Object.keys(discountCodes).some(key => {
+          if(discountCode === key) {
+            this.discount = discountCodes[key];
+          }
+        });
+      } else this.discount = 0;
+
       this.cartList = [];
     }
    
@@ -82,20 +99,7 @@ function validateNumber(num) {
     }
    
     cartSummary() {
-      const discountCodes = {
-        bestreader: 30,
-        midbestreader: 25,
-        midreader: 20,
-        newreader: 5
-      };
-
-      Object.keys(discountCodes).some(key => {
-        if(this.discountCode === key) {
-          this.discount = discountCodes[key] / 100;
-        }
-      });
-
-      const result = this.cartList.map(item => ((item.price * item.amount) - (item.price * item.amount * this.discount))).reduce((acc, el) => acc += el);
+      const result = this.cartList.map(item => ((item.price * item.amount) - (item.price * item.amount * (this.discount/100)))).reduce((acc, el) => acc += el);
       console.log(`Your cart is worth ${result.toFixed(2)} PLN.`);
     }
   }
