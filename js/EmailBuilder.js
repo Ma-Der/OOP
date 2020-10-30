@@ -58,7 +58,7 @@ class Email {
       return this
     }
     build() {
-      return new Email(this.from, this.to, this.cc, this.bcc, this.title, this.html)
+      return JSON.stringify(new Email(this.from, this.to, this.cc, this.bcc, this.title, this.html));
     }
   }
   

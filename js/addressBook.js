@@ -3,20 +3,11 @@ function validateEmail(email) {
   return reg.test(email);
 }
 function validateContact(contact) {
-  if(!(Object.prototype.toString.call(contact) === '[object Object]')) throw new Error("Argument must be a Contact object.");
-  if(!(contact.hasOwnProperty('id') && 
-    contact.hasOwnProperty('name') && 
-    contact.hasOwnProperty('surname') && 
-    contact.hasOwnProperty('email') && 
-    contact.hasOwnProperty('createDate') && 
-    contact.hasOwnProperty('modificationDate'))) throw new Error("This is not Contact object, argument needs to be a Contact object.");
+  if(!(contact instanceof Contact)) throw new Error("Argument must be a Contact object.");
 }
 
 function validateGroup(group) {
-  if(!(Object.prototype.toString.call(group) === '[object Object]')) throw new Error("First argument must be an object.");
-  if(!(group.hasOwnProperty('id') && 
-    group.hasOwnProperty('groupName') && 
-    group.hasOwnProperty('contactList'))) throw new Error("This is not Group object, argument needs to be a Group object.");
+  if(!(group instanceof Group)) throw new Error("Argument must be a Group object.");
 }
 
 export class Contact {

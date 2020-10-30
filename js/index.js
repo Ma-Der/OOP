@@ -1,6 +1,7 @@
 import { Contact, Group, AddressBook } from '/js/addressBook.js';
 import { CartItem, Cart } from '/js/cart.js';
 import { EmailBuilder } from '/js/EmailBuilder.js';
+import { Library, Book } from '/js/Library.js';
 
 // AddressBook
 
@@ -53,7 +54,7 @@ console.log(addressOne);
 console.log(addressOne);
 
 
-document.querySelector('#main').innerHTML = JSON.stringify(man);
+//document.querySelector('#main').innerHTML = JSON.stringify(man);
 
 // CART
 
@@ -82,3 +83,31 @@ const newMail = new EmailBuilder('Leon Zawodowiec')
 .setMessage('sd')
 .build()
 console.log(newMail)
+
+// Library
+
+console.log("-------------------------------------------------------------------------------");
+
+const gambit = new Book('Gambit', 'Neil Shon', 'short description');
+const fightingDestiny = new Book('Fighting with destiny', 'Carl Lewis', 'very short description');
+const temptations = new Book('Temptations', 'Tom Nowak', 'another short description');
+const original = new Book('Original Sin', 'Jane Below', 'so short desscription');
+const fixer = new Book('Fixer', 'John Grisham', 'good good book');
+
+const library = new Library();
+library.addBook(gambit);
+library.addBook(fightingDestiny);
+library.addBook(temptations);
+library.addBook(original);
+library.addBook(fixer);
+library.rentBook(gambit);
+library.rentBook(original);
+library.returnBook(gambit);
+//library.returnBook(original);
+console.log(library);
+
+
+// User
+
+console.log("--------------------------------------------------------------------------------------");
+

@@ -1,10 +1,5 @@
 function validateCartItem(cartItem) {
-  if(!(Object.prototype.toString.call(cartItem) === '[object Object]')) throw new Error("Argument must be a CartItem object.");
-  if(!(cartItem.hasOwnProperty('id') && 
-    cartItem.hasOwnProperty('name') && 
-    cartItem.hasOwnProperty('category') && 
-    cartItem.hasOwnProperty('price') && 
-    cartItem.hasOwnProperty('discount'))) throw new Error("This is not CartItem object, argument needs to be a CartItem object.");
+  if(!(cartItem instanceof CartItem)) throw new Error("Argument must be a CartItem object.");
 }
 
 function validateAmount(amount) {
